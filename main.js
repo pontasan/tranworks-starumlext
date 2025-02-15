@@ -156,7 +156,7 @@ function importDDL(sql) {
       }
 
       if (isDefaultScan) {
-        if (charArray[i] === ' ' || charArray[i] === ',') {
+        if (charArray[i] === ' ' || charArray[i] === ',' || charArray[i] === ')') {
           isDefaultScan = false;
           column.defaultValue = buf.trim();
           buf = '';
@@ -270,7 +270,7 @@ function handleImportDDL() {
           const entity = app.factory.createModelAndView(options);
 
           for (const col of tableInfo.columns) {
-            app.factory.createModel({
+            const colModel = app.factory.createModel({
               id: 'ERDColumn',
               field: 'columns',
               parent: entity.model,
@@ -282,6 +282,19 @@ function handleImportDDL() {
                 model.nullable = col.nullable;
               }
             });
+
+            if (col.defaultValue && col.defaultValue.trim().length !== 0) {
+              app.factory.createModel({
+                id: "Tag",
+                parent: colModel,
+                field: "tags",
+                modelInitializer: function (tag) {
+                  tag.name = "default";
+                  tag.kind = type.Tag.TK_STRING;
+                  tag.value = `${col.defaultValue}`
+                }
+              });
+            }
           }
         }
 
