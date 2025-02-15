@@ -1,0 +1,20 @@
+{
+  "menu": [
+    {
+      "id": "tools",
+      "submenu": [
+        {
+          "label": "Pontasan Tools",
+          "id": "tool.tranworks-starumlext",
+          "submenu": [
+            {
+              "label": "Import DDL",
+              "id": "tool.tranworks-starumlext-importddl",
+              "command": "tranworks-starumlext-importddl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

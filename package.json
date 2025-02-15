@@ -1,0 +1,15 @@
+{
+  "name": "tranworks-starumlext",
+  "title": "tranworks-starumlext",
+  "description": "tranworks-starumlext",
+  "version": "1.0.0",
+  "author": {
+    "name": "Tomohiro Umeda",
+    "email": "t.umeda@tranworks.com",
+    "url": "https://github.com/pontasan"
+  },
+  "license": "MIT",
+  "engines": {
+    "staruml": ">=3.0.0"
+  }
+}
